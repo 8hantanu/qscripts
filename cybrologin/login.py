@@ -46,6 +46,7 @@ def loginOptions():
         return option
     else:
         print("Invalid input ...")
+        loginOptions()
 
 
 def inputCredentials():
@@ -133,6 +134,7 @@ if __name__ == '__main__':
                 for line in credsfile:
                     uname, pword = line.split('!')
                     uname = (b64decode(uname.encode("utf-8"))).decode("utf-8")
+                    pword = (b64decode(pword[:-1].encode("utf-8"))).decode("utf-8")
                     usernames.append(uname)
                     passwords.append(pword)
                 credsfile.close()
